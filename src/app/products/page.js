@@ -151,25 +151,20 @@ const all15Products = [
 ];
 
 export default function ProductsPage() {
-  const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("ALL");
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
 
-  const filteredProducts = all15Products.filter((p) => {
-    const matchesCategory = activeCategory === "ALL" || p.category.toUpperCase().includes(activeCategory);
-    const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          p.category.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const filteredProducts = activeCategory === "ALL" 
+    ? all15Products 
+    : all15Products.filter((p) => p.category.toUpperCase().includes(activeCategory));
 
   return (
     <>
       <GSAPAnimations />
       <Navbar />
 
-      {/* Modern Hero Header with Search Bar */}
+      {/* Modern Hero Header */}
       <section className="products-hero-section">
         <div className="container" style={{ textAlign: "center", position: "relative", zIndex: 2 }}>
           <div className="products-hero-badge">
@@ -183,23 +178,8 @@ export default function ProductsPage() {
             Our Global Product Catalog
           </h1>
           <p style={{ maxWidth: "680px", margin: "0 auto", fontSize: "16px", color: "rgba(255,255,255,0.8)", lineHeight: "1.7" }}>
-            Search or filter through our 15 certified product offerings across Agri Exports, Overseas Apparel Imports, and Heavy Industrial Machinery.
+            Filter through our 15 certified product offerings across Agri Exports, Overseas Apparel Imports, and Heavy Industrial Machinery.
           </p>
-
-          {/* Interactive Search Bar */}
-          <div className="products-search-box">
-            <svg className="products-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input 
-              type="text" 
-              className="products-search-input" 
-              placeholder="Search products e.g., Basmati Rice, Machinery, Cosmetics..." 
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
         </div>
       </section>
 
@@ -251,8 +231,8 @@ export default function ProductsPage() {
           {/* Product Cards Showcase Grid */}
           {filteredProducts.length === 0 ? (
             <div style={{ textAlign: "center", padding: "60px 20px", background: "#FFFFFF", borderRadius: "20px", border: "1px dashed #CBD5E1" }}>
-              <h3 style={{ fontSize: "20px", fontWeight: "700", color: "#0F2537", marginBottom: "8px" }}>No products found matching &quot;{searchQuery}&quot;</h3>
-              <p style={{ color: "#64748B", fontSize: "14px" }}>Try searching with another keyword or click &quot;ALL PRODUCTS&quot; above.</p>
+              <h3 style={{ fontSize: "20px", fontWeight: "700", color: "#0F2537", marginBottom: "8px" }}>No products found in this category</h3>
+              <p style={{ color: "#64748B", fontSize: "14px" }}>Click &quot;ALL PRODUCTS&quot; above to view our full catalog.</p>
             </div>
           ) : (
             <div className="modern-products-grid">
