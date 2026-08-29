@@ -151,91 +151,163 @@ const all15Products = [
 ];
 
 export default function ProductsPage() {
+  const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("ALL");
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
 
-  const filteredProducts = activeCategory === "ALL" 
-    ? all15Products 
-    : all15Products.filter(p => p.category.toUpperCase().includes(activeCategory));
+  const filteredProducts = all15Products.filter((p) => {
+    const matchesCategory = activeCategory === "ALL" || p.category.toUpperCase().includes(activeCategory);
+    const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          p.category.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <>
       <GSAPAnimations />
       <Navbar />
 
-      {/* Header Banner */}
-      <section className="section bg-light" style={{ background: "#FAF7F2", padding: "60px 0 40px" }}>
-        <div className="container">
-          <div className="section-header" style={{ marginBottom: "30px" }}>
-            <div className="section-label" style={{ background: "#F4EFE6", color: "#0F2537", padding: "6px 14px", borderRadius: "20px", display: "inline-block", fontSize: "12px", fontWeight: "700", marginBottom: "16px" }}>
-              OUR PRODUCT PORTFOLIO
-            </div>
-            <h1 className="section-title" style={{ marginBottom: "16px", color: "#0F2537" }}>
-              Comprehensive Import & Export Catalog
-            </h1>
-            <p className="section-desc" style={{ maxWidth: "720px", margin: "0 auto", fontSize: "16px", color: "#64748B", lineHeight: "1.8" }}>
-              Explore 10X International&apos;s full catalog of 15 premium products spanning Agricultural Exports to UAE, Quality China Imports to India, and Heavy Industrial Machinery Exports to Africa.
-            </p>
+      {/* Modern Hero Header with Search Bar */}
+      <section className="products-hero-section">
+        <div className="container" style={{ textAlign: "center", position: "relative", zIndex: 2 }}>
+          <div className="products-hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+            15 EXCLUSIVE GLOBAL TRADE CATEGORIES
           </div>
+          
+          <h1 style={{ fontSize: "38px", fontWeight: "900", marginBottom: "16px", letterSpacing: "-0.5px" }}>
+            Our Global Product Catalog
+          </h1>
+          <p style={{ maxWidth: "680px", margin: "0 auto", fontSize: "16px", color: "rgba(255,255,255,0.8)", lineHeight: "1.7" }}>
+            Search or filter through our 15 certified product offerings across Agri Exports, Overseas Apparel Imports, and Heavy Industrial Machinery.
+          </p>
 
-          {/* Category Filter Tabs */}
-          <div style={{ display: "flex", justifyContent: "center", gap: "12px", flexWrap: "wrap", margin: "30px 0 10px" }}>
+          {/* Interactive Search Bar */}
+          <div className="products-search-box">
+            <svg className="products-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input 
+              type="text" 
+              className="products-search-input" 
+              placeholder="Search products e.g., Basmati Rice, Machinery, Cosmetics..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Modern Showcase Content Section */}
+      <section className="section" style={{ background: "#FAF7F2", padding: "50px 0 90px" }}>
+        <div className="container">
+          {/* Category Filter Pills */}
+          <div style={{ display: "flex", justifyContent: "center", gap: "12px", flexWrap: "wrap", marginBottom: "40px" }}>
             {[
-              { label: "ALL PRODUCTS (15)", value: "ALL" },
-              { label: "AGRI EXPORTS (5)", value: "AGRI" },
-              { label: "IMPORT PRODUCTS (5)", value: "IMPORT" },
-              { label: "INDUSTRIAL EXPORTS (5)", value: "INDUSTRIAL" }
+              { label: "ALL PRODUCTS", count: 15, value: "ALL" },
+              { label: "AGRI EXPORTS", count: 5, value: "AGRI" },
+              { label: "IMPORT PRODUCTS", count: 5, value: "IMPORT" },
+              { label: "INDUSTRIAL EXPORTS", count: 5, value: "INDUSTRIAL" }
             ].map(tab => (
               <button
                 key={tab.value}
                 onClick={() => setActiveCategory(tab.value)}
                 style={{
-                  padding: "10px 22px",
-                  borderRadius: "30px",
-                  fontWeight: "700",
+                  padding: "12px 24px",
+                  borderRadius: "50px",
+                  fontWeight: "800",
                   fontSize: "13px",
                   cursor: "pointer",
-                  transition: "all 0.3s ease",
-                  border: activeCategory === tab.value ? "none" : "1px solid #CBD5E1",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                  border: activeCategory === tab.value ? "none" : "1px solid #EAE3D2",
                   background: activeCategory === tab.value ? "#0F2537" : "#FFFFFF",
                   color: activeCategory === tab.value ? "#FFFFFF" : "#475569",
-                  boxShadow: activeCategory === tab.value ? "0 8px 20px rgba(15, 37, 55, 0.2)" : "none"
+                  boxShadow: activeCategory === tab.value ? "0 10px 25px rgba(15, 37, 55, 0.2)" : "0 4px 12px rgba(0,0,0,0.02)",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px"
                 }}
               >
-                {tab.label}
+                <span>{tab.label}</span>
+                <span style={{
+                  background: activeCategory === tab.value ? "rgba(255,255,255,0.2)" : "#F1F5F9",
+                  color: activeCategory === tab.value ? "#FFFFFF" : "#64748B",
+                  padding: "2px 8px",
+                  borderRadius: "12px",
+                  fontSize: "11px",
+                  fontWeight: "700"
+                }}>
+                  {tab.count}
+                </span>
               </button>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Product Grid Section */}
-      <section className="section" style={{ background: "#FAF7F2", padding: "20px 0 80px" }}>
-        <div className="container">
-          <div className="products-grid">
-            {filteredProducts.map((p) => (
-              <div className="product-card" key={p.id}>
-                <div className="product-card-img">
-                  <Image 
-                    src={p.image} 
-                    alt={p.name} 
-                    width={400} 
-                    height={300} 
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }} 
-                  />
-                  <div className="product-card-badge">{p.category}</div>
+          {/* Product Cards Showcase Grid */}
+          {filteredProducts.length === 0 ? (
+            <div style={{ textAlign: "center", padding: "60px 20px", background: "#FFFFFF", borderRadius: "20px", border: "1px dashed #CBD5E1" }}>
+              <h3 style={{ fontSize: "20px", fontWeight: "700", color: "#0F2537", marginBottom: "8px" }}>No products found matching &quot;{searchQuery}&quot;</h3>
+              <p style={{ color: "#64748B", fontSize: "14px" }}>Try searching with another keyword or click &quot;ALL PRODUCTS&quot; above.</p>
+            </div>
+          ) : (
+            <div className="modern-products-grid">
+              {filteredProducts.map((p) => (
+                <div className="modern-product-card" key={p.id}>
+                  <div className="modern-product-img-box">
+                    <Image 
+                      src={p.image} 
+                      alt={p.name} 
+                      width={400} 
+                      height={300} 
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }} 
+                    />
+                    <div className="modern-card-tag">{p.category}</div>
+                  </div>
+                  
+                  <div className="modern-card-body">
+                    <h3 className="modern-card-title">{p.name}</h3>
+                    <div className="modern-card-origin">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F2537" strokeWidth="2.5">
+                        <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                      </svg>
+                      {p.origin}
+                    </div>
+                    <p className="modern-card-desc">{p.description}</p>
+                    
+                    <div className="modern-card-actions">
+                      <button className="btn-quick-view" onClick={() => setSelectedProduct(p)}>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <line x1="12" y1="16" x2="12" y2="12"></line>
+                          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        VIEW DETAILS
+                      </button>
+                      
+                      <button 
+                        className="btn-wa-direct"
+                        title="Inquire via WhatsApp"
+                        onClick={() => {
+                          const text = `Hello 10X International!%0A%0AI am interested in inquiring about:*${p.name}* (${p.category}).%0APlease share bulk pricing and shipping details.`;
+                          window.open(`https://wa.me/917984488660?text=${text}`, "_blank");
+                        }}
+                      >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.762.459 3.48 1.332 4.992l-1.417 5.176 5.302-1.391c1.455.794 3.097 1.213 4.77 1.214h.004c5.505 0 9.988-4.479 9.989-9.985 0-2.668-1.037-5.176-2.922-7.062a9.923 9.923 0 00-7.068-2.932zm0 1.666c4.588 0 8.324 3.734 8.325 8.32 0 2.223-.865 4.312-2.438 5.885a8.271 8.271 0 01-5.887 2.435h-.003c-1.464 0-2.895-.386-4.14-1.118l-.297-.173-3.076.806.82-2.997-.19-.302a8.28 8.28 0 01-1.216-4.356c0-4.586 3.736-8.32 8.324-8.32z"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div className="product-card-body">
-                  <div className="product-card-name">{p.name}</div>
-                  <div className="product-card-origin">{p.origin}</div>
-                  <button className="view-detail-link-btn" onClick={() => setSelectedProduct(p)}>
-                    VIEW DETAILS &rarr;
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
