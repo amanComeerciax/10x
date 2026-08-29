@@ -324,7 +324,12 @@ export default function ProductsPage() {
                   <div className="product-modal-highlights-title">Key Product Features &amp; Standards:</div>
                   <ul>
                     {selectedProduct.highlights.map((h, i) => (
-                      <li key={i}>{h}</li>
+                      <li key={i}>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        {h}
+                      </li>
                     ))}
                   </ul>
                 </div>
