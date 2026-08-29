@@ -5,11 +5,13 @@ export default function Footer() {
         <div className="footer-grid">
           {/* Company Info */}
           <div className="footer-col footer-about">
-            <div className="logo" style={{ marginBottom: "16px" }}>
-              <div className="logo-icon" style={{ fontSize: "22px", padding: "3px 8px" }}>10X</div>
-              <div className="logo-text">
-                <span style={{ color: "#fff" }}>INTERNATIONAL</span>
-                <span>IMPORT | EXPORT</span>
+            <div className="logo-brand logo-brand-footer" style={{ marginBottom: "16px" }}>
+              <div className="logo-10x logo-10x-footer">
+                10<span className="logo-x-green">X</span>
+              </div>
+              <div className="logo-brand-text">
+                <span className="brand-title brand-title-footer">INTERNATIONAL</span>
+                <span className="brand-sub brand-sub-footer">IMPORT | EXPORT</span>
               </div>
             </div>
             <p>

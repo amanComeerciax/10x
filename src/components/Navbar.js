@@ -14,11 +14,13 @@ export default function Navbar() {
   return (
     <nav className="navbar" id="navbar">
       <div className="container">
-        <Link href="/" className="logo" onClick={closeMenu}>
-          <div className="logo-icon">10X</div>
-          <div className="logo-text">
-            <span>INTERNATIONAL</span>
-            <span>IMPORT | EXPORT</span>
+        <Link href="/" className="logo-brand" onClick={closeMenu}>
+          <div className="logo-10x">
+            10<span className="logo-x-green">X</span>
+          </div>
+          <div className="logo-brand-text">
+            <span className="brand-title">INTERNATIONAL</span>
+            <span className="brand-sub">IMPORT | EXPORT</span>
           </div>
         </Link>
 
