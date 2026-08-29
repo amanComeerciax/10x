@@ -84,7 +84,7 @@ export default function HeroSection() {
         <div className="hero-clean-right">
           <div className="hero-image-box">
             <Image
-              src="/images/heros.png?v=2"
+              src="/images/heros.png"
               alt="10X International Premium Commodities Import & Export Logistics"
               width={750}
               height={500}
