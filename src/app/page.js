@@ -9,10 +9,12 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import OurProcess from "@/components/OurProcess";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
+import GSAPAnimations from "@/components/GSAPAnimations";
 
 export default function Home() {
   return (
     <>
+      <GSAPAnimations />
       <TopBar />
       <Navbar />
       <HeroSection />
