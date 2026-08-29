@@ -13,10 +13,10 @@ export default function QualityPage() {
     <>
       <Navbar />
 
-      <section className="section bg-light" style={{ background: "linear-gradient(to bottom, #F8FAFC, #FFFFFF)" }}>
+      <section className="section bg-light" style={{ background: "#FAF7F2" }}>
         <div className="container">
           <div className="section-header" style={{ marginBottom: "50px" }}>
-            <div className="section-label" style={{ background: "#E6F4EA", color: "#0B3A26", padding: "6px 14px", borderRadius: "20px", display: "inline-block", fontSize: "12px", fontWeight: "700", marginBottom: "16px" }}>QUALITY ASSURANCE</div>
+            <div className="section-label" style={{ background: "#F4EFE6", color: "#0F2537", padding: "6px 14px", borderRadius: "20px", display: "inline-block", fontSize: "12px", fontWeight: "700", marginBottom: "16px" }}>QUALITY ASSURANCE</div>
             <h1 className="section-title" style={{ marginBottom: "20px" }}>Uncompromising Quality Standards</h1>
             <p className="section-desc" style={{ maxWidth: "700px", margin: "0 auto", fontSize: "16px", color: "#64748B", lineHeight: "1.8" }}>
               At 10X International, quality is not just a standard—it&apos;s a promise. We have implemented rigorous checking mechanisms to ensure our exports and imports meet global benchmarks.
@@ -27,7 +27,7 @@ export default function QualityPage() {
 
       <section className="section" style={{ background: "#FFFFFF", paddingBottom: "60px" }}>
         <div className="container">
-          <div className="quality-cert-card" style={{ background: "#0B3A26", borderRadius: "24px", color: "#FFFFFF", display: "flex", gap: "40px", flexWrap: "wrap", alignItems: "center", boxShadow: "0 20px 40px rgba(11, 58, 38, 0.15)" }}>
+          <div className="quality-cert-card" style={{ background: "#0F2537", borderRadius: "24px", color: "#FFFFFF", display: "flex", gap: "40px", flexWrap: "wrap", alignItems: "center", boxShadow: "0 20px 40px rgba(15, 37, 55, 0.15)" }}>
             <div style={{ flex: 1, minWidth: "250px" }}>
               <div style={{ display: "inline-block", padding: "8px 16px", background: "rgba(255,255,255,0.1)", borderRadius: "20px", fontSize: "13px", fontWeight: "600", marginBottom: "20px" }}>CERTIFICATIONS</div>
               <h2 style={{ fontSize: "32px", fontWeight: "800", marginBottom: "20px", lineHeight: "1.3" }}>Govt. Approved Trade Partner</h2>
@@ -36,8 +36,8 @@ export default function QualityPage() {
               </p>
               
               <div style={{ background: "#FFFFFF", padding: "24px", borderRadius: "16px", display: "flex", alignItems: "center", gap: "20px" }}>
-                <div style={{ width: "60px", height: "60px", borderRadius: "50%", background: "#E6F4EA", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0B3A26" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                <div style={{ width: "60px", height: "60px", borderRadius: "50%", background: "#F4EFE6", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0F2537" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
                 </div>
                 <div>
                   <h3 style={{ fontSize: "18px", fontWeight: "800", color: "#0F172A", margin: "0 0 4px 0" }}>IEC CERTIFIED</h3>
