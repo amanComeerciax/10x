@@ -94,7 +94,7 @@ export default function OurProcess() {
             <div className="process-right-col">
               <div className="process-image-container">
                 <Image
-                  src="/images/heros.png"
+                  src="/images/heros.png?v=2"
                   alt="10X International Premium Logistics and Export Process"
                   width={600}
                   height={500}
