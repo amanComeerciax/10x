@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --primary: #1B4D3E;
-  --primary-dark: #0F1E2E;
-  --primary-light: #206A4E;
+  --primary: #0F2537;
+  --primary-dark: #0A1926;
+  --primary-light: #183C57;
   --accent: #C5A059;
   --white: #FFFFFF;
-  --light-bg: #FAF8F5;
-  --card-cream: #F3EEE3;
-  --card-border: #EAE3D2;
-  --text-dark: #111827;
-  --text-muted: #4B5563;
+  --light-bg: #FAF7F2;
+  --card-cream: #F4EFE6;
+  --card-border: #E8E1D3;
+  --text-dark: #0B1928;
+  --text-muted: #475569;
   --shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
@@ -307,14 +307,14 @@ img {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 42px;
   font-weight: 700;
-  color: #0F172A;
+  color: var(--primary-dark);
   line-height: 1.18;
   margin-bottom: 18px;
   letter-spacing: -0.5px;
 }
 
 .text-green-highlight {
-  color: #1B5E20;
+  color: var(--primary);
 }
 
 .hero-clean-desc {
@@ -577,7 +577,7 @@ img {
 }
 
 .stats-banner-card {
-  background: #0B3A26;
+  background: var(--primary);
   border-radius: 16px;
   padding: 30px 40px;
   display: flex;
@@ -636,7 +636,7 @@ img {
 
 /* ============ WHY CHOOSE US ============ */
 .why-choose {
-  background: #FAFAFA;
+  background: var(--light-bg);
   padding: 70px 0;
 }
 
@@ -660,7 +660,7 @@ img {
 
 .why-card:hover {
   transform: translateY(-4px);
-  border-color: #1B5E20;
+  border-color: var(--primary);
   box-shadow: 0 10px 24px rgba(27, 94, 32, 0.08);
 }
 
@@ -669,7 +669,7 @@ img {
   width: 42px;
   height: 42px;
   border-radius: 10px;
-  background: #F0FDF4;
+  background: #F4EFE6;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -679,7 +679,7 @@ img {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 14px;
   font-weight: 700;
-  color: #0F172A;
+  color: var(--primary-dark);
   margin-bottom: 6px;
   line-height: 1.3;
 }
@@ -756,7 +756,7 @@ img {
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  background: #0B3A26;
+  background: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -772,7 +772,7 @@ img {
 .process-num-text {
   font-size: 11.5px;
   font-weight: 800;
-  color: #0F172A;
+  color: var(--primary-dark);
   letter-spacing: 0.5px;
 }
 
@@ -780,7 +780,7 @@ img {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11.5px;
   font-weight: 800;
-  color: #0B3A26;
+  color: #0F2537;
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
@@ -825,7 +825,7 @@ img {
 }
 
 .cta-banner-card {
-  background: #0B3A26;
+  background: var(--primary);
   border-radius: 16px;
   padding: 26px 40px;
   display: flex;
@@ -869,7 +869,7 @@ img {
 
 .cta-btn-white {
   background: #FFFFFF;
-  color: #0B3A26;
+  color: #0F2537;
   padding: 14px 28px;
   border-radius: 50px;
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -885,7 +885,7 @@ img {
 }
 
 .cta-btn-white:hover {
-  background: #F8FAFC;
+  background: var(--light-bg);
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
@@ -1145,7 +1145,7 @@ img {
     padding: 32px 0 24px;
     min-height: auto;
     display: block;
-    background: #FAFAFA;
+    background: var(--light-bg);
   }
 
   .hero-clean-container {
@@ -1167,7 +1167,7 @@ img {
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.5px;
-    color: #1B5E20;
+    color: var(--primary);
     margin-bottom: 12px;
     text-transform: uppercase;
   }
@@ -1179,11 +1179,11 @@ img {
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 14px;
-    color: #0F172A;
+    color: var(--primary-dark);
   }
 
   .text-green-highlight {
-    color: #1B5E20;
+    color: var(--primary);
   }
 
   .hero-clean-desc {
@@ -1278,7 +1278,7 @@ img {
   .feature-subtitle {
     font-size: 9.5px;
     font-weight: 700;
-    color: #0F172A;
+    color: var(--primary-dark);
     line-height: 1.2;
   }
 
