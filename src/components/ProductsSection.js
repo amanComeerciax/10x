@@ -1,4 +1,7 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
+import QuoteModal from "./QuoteModal";
 
 const importProducts = [
   { name: "KIDS WEAR", origin: "Imported from China to India", image: "/images/kids_wear.png" },
@@ -45,6 +48,8 @@ function ProductCard({ product }) {
 }
 
 export default function ProductsSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section className="section" id="products">
       <div className="container">
@@ -56,6 +61,7 @@ export default function ProductsSection() {
             <span className="section-title-line"></span>
           </div>
         </div>
+
         {/* Agri Exports */}
         <div className="products-grid">
           {agriExports.map((p, i) => <ProductCard key={i} product={p} />)}
@@ -71,10 +77,12 @@ export default function ProductsSection() {
           {industrialExports.map((p, i) => <ProductCard key={i} product={p} />)}
         </div>
 
-        <button className="view-all-btn">
-          VIEW ALL PRODUCTS
+        <button className="view-all-btn" onClick={() => setIsModalOpen(true)} style={{ border: 'none', cursor: 'pointer' }}>
+          GET INQUIRY
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
+
+        <QuoteModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </div>
     </section>
   );

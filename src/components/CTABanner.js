@@ -1,4 +1,10 @@
+"use client";
+import { useState } from "react";
+import QuoteModal from "./QuoteModal";
+
 export default function CTABanner() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section className="cta-banner-section">
       <div className="container">
@@ -16,14 +22,20 @@ export default function CTABanner() {
             </div>
           </div>
 
-          <a href="#contact" className="cta-btn-white">
+          <button 
+            className="cta-btn-white" 
+            onClick={() => setIsModalOpen(true)}
+            style={{ border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}
+          >
             GET IN TOUCH
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </a>
+          </button>
         </div>
       </div>
+
+      <QuoteModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 }
