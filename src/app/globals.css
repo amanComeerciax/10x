@@ -477,8 +477,14 @@ img {
   margin-bottom: 50px;
 }
 
+#products {
+  background: var(--light-bg);
+  padding: 70px 0;
+}
+
 .product-card {
-  background: var(--white);
+  background: var(--card-cream);
+  border: 1px solid var(--card-border);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--shadow);
