@@ -1584,23 +1584,28 @@ img {
 .view-detail-link-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  background: transparent;
+  background: #0F2537;
   border: none;
-  color: var(--primary);
+  color: #FFFFFF;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
-  margin-top: 10px;
-  padding: 4px 0;
-  transition: var(--transition);
+  margin-top: 12px;
+  padding: 8px 18px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
   letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(15, 37, 55, 0.2);
 }
 
 .view-detail-link-btn:hover {
-  color: var(--accent);
-  transform: translateX(4px);
+  background: #16364D;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(15, 37, 55, 0.35);
 }
 
 .product-modal-content {
