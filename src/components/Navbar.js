@@ -31,6 +31,7 @@ export default function Navbar() {
         } : undefined}>
           <Link href="/" className={pathname === '/' ? "active" : ""} onClick={closeMenu}>HOME</Link>
           <Link href="/about" className={pathname === '/about' ? "active" : ""} onClick={closeMenu}>ABOUT US</Link>
+          <Link href="/products" className={pathname === '/products' ? "active" : ""} onClick={closeMenu}>PRODUCTS</Link>
           <Link href="/services" className={pathname === '/services' ? "active" : ""} onClick={closeMenu}>SERVICES</Link>
           <Link href="/quality" className={pathname === '/quality' ? "active" : ""} onClick={closeMenu}>QUALITY</Link>
           <Link href="/contact" className={pathname === '/contact' ? "active" : ""} onClick={closeMenu}>CONTACT US</Link>
