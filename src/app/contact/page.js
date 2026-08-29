@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
+import GSAPAnimations from "@/components/GSAPAnimations";
 
 export const metadata = {
   title: "Contact Us | 10X International",
@@ -10,6 +11,7 @@ export const metadata = {
 export default function ContactPage() {
   return (
     <>
+      <GSAPAnimations />
       <Navbar />
 
       <section className="section bg-light" style={{ background: "#FAF7F2" }}>

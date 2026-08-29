@@ -108,6 +108,43 @@ export default function GSAPAnimations() {
       }
     );
 
+    // 7. Section Header Fade & Slide Animation
+    gsap.utils.toArray(".section-header").forEach((header) => {
+      gsap.fromTo(
+        header,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: header,
+            start: "top 85%",
+          },
+        }
+      );
+    });
+
+    // 8. Quality Cert Card Reveal
+    if (document.querySelector(".quality-cert-card")) {
+      gsap.fromTo(
+        ".quality-cert-card",
+        { opacity: 0, scale: 0.96, y: 30 },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".quality-cert-card",
+            start: "top 85%",
+          },
+        }
+      );
+    }
+
     // Cleanup triggers on unmount
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());

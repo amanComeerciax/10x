@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
 import OurProcess from "@/components/OurProcess";
+import GSAPAnimations from "@/components/GSAPAnimations";
 
 export const metadata = {
   title: "Our Services | 10X International",
@@ -11,6 +12,7 @@ export const metadata = {
 export default function ServicesPage() {
   return (
     <>
+      <GSAPAnimations />
       <Navbar />
 
       <section className="section bg-light" style={{ background: "#FAF7F2" }}>

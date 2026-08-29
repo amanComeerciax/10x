@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import CTABanner from "@/components/CTABanner";
+import GSAPAnimations from "@/components/GSAPAnimations";
 
 export const metadata = {
   title: "Quality Assurance | 10X International",
@@ -11,6 +12,7 @@ export const metadata = {
 export default function QualityPage() {
   return (
     <>
+      <GSAPAnimations />
       <Navbar />
 
       <section className="section bg-light" style={{ background: "#FAF7F2" }}>

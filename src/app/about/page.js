@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
+import GSAPAnimations from "@/components/GSAPAnimations";
 
 export const metadata = {
   title: "About Us | 10X International",
@@ -10,6 +11,7 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <>
+      <GSAPAnimations />
       <Navbar />
 
       {/* About Hero */}
