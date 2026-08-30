@@ -10,16 +10,32 @@ export default function QuoteModal({ isOpen, onClose }) {
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   if (!isOpen) return null;
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     const { name, phone, email, product, message } = formData;
+
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone, email, product, message }),
+      });
+    } catch (err) {
+      console.error("Email send error:", err);
+    }
+
     const waNumber = "917984488660";
     const text = `Hello 10X International!%0A%0A*New Inquiry / Quote Request*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Email:* ${email}%0A*Product of Interest:* ${product}%0A*Message:* ${message}`;
     window.open(`https://wa.me/${waNumber}?text=${text}`, "_blank");
+    
+    setIsSubmitting(false);
     onClose();
   };
 

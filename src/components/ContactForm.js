@@ -9,14 +9,33 @@ export default function ContactForm() {
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     const { name, email, subject, message } = formData;
+
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message }),
+      });
+    } catch (err) {
+      console.error("Email send error:", err);
+    }
+
     const waNumber = "917984488660";
     const text = `Hello 10X International!%0A%0A*New Contact Inquiry*%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Subject:* ${subject}%0A*Message:* ${message}`;
     window.open(`https://wa.me/${waNumber}?text=${text}`, "_blank");
+    
+    setIsSubmitting(false);
+    setSubmitted(true);
+    setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
   return (
@@ -39,8 +58,28 @@ export default function ContactForm() {
         <label style={{ display: "block", fontSize: "13px", fontWeight: "600", color: "#475569", marginBottom: "8px" }}>Message *</label>
         <textarea name="message" rows="5" required placeholder="Write your message here..." value={formData.message} onChange={handleChange} style={{ width: "100%", padding: "12px 16px", borderRadius: "8px", border: "1px solid #CBD5E1", fontSize: "14px", outline: "none", resize: "vertical" }}></textarea>
       </div>
-      <button type="submit" style={{ background: "#0B3A26", color: "#FFFFFF", border: "none", padding: "14px 28px", borderRadius: "8px", fontSize: "14px", fontWeight: "700", cursor: "pointer", transition: "all 0.3s" }}>
-        Send WhatsApp Message
+      {submitted && (
+        <div style={{ padding: "12px 16px", background: "#DEF7EC", color: "#03543F", borderRadius: "8px", fontSize: "14px", fontWeight: "600", marginBottom: "16px" }}>
+          ✓ Inquiry sent to Email & WhatsApp! We will get back to you shortly.
+        </div>
+      )}
+      <button 
+        type="submit" 
+        disabled={isSubmitting}
+        style={{ 
+          background: "#0F2537", 
+          color: "#FFFFFF", 
+          border: "none", 
+          padding: "14px 28px", 
+          borderRadius: "8px", 
+          fontSize: "14px", 
+          fontWeight: "700", 
+          cursor: "pointer", 
+          transition: "all 0.3s",
+          opacity: isSubmitting ? 0.7 : 1
+        }}
+      >
+        {isSubmitting ? "Sending..." : "Send Email & WhatsApp Inquiry"}
       </button>
     </form>
   );
