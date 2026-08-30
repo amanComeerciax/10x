@@ -12,10 +12,14 @@ export default function QuoteModal({ isOpen, onClose }) {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedType, setSubmittedType] = useState(null); // 'email' | 'whatsapp' | null
+  const [errorMsg, setErrorMsg] = useState("");
 
   if (!isOpen) return null;
 
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (errorMsg) setErrorMsg("");
+  };
 
   const handleSuccessAnimation = (type) => {
     setSubmittedType(type);
@@ -29,11 +33,12 @@ export default function QuoteModal({ isOpen, onClose }) {
     e.preventDefault();
     const { name, phone, email, product, message } = formData;
     if (!name || !phone || !product) {
-      alert("Please fill out all required fields (*).");
+      setErrorMsg("Please fill out all required fields (*).");
       return;
     }
 
     setIsSubmitting(true);
+    setErrorMsg("");
 
     try {
       await fetch('/api/contact', {
@@ -53,10 +58,11 @@ export default function QuoteModal({ isOpen, onClose }) {
     e.preventDefault();
     const { name, phone, email, product, message } = formData;
     if (!name || !phone || !product) {
-      alert("Please fill out all required fields (*).");
+      setErrorMsg("Please fill out all required fields (*).");
       return;
     }
 
+    setErrorMsg("");
     const waNumber = "917984488660";
     const text = `Hello 10X International!%0A%0A*New Inquiry / Quote Request*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Email:* ${email}%0A*Product of Interest:* ${product}%0A*Message:* ${message}`;
     window.open(`https://wa.me/${waNumber}?text=${text}`, "_blank");
@@ -159,6 +165,17 @@ export default function QuoteModal({ isOpen, onClose }) {
                 <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: '#475569', marginBottom: '6px' }}>Your Requirements</label>
                 <textarea name="message" rows="3" placeholder="Tell us more about what you need..." value={formData.message} onChange={handleChange} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '14px', outline: 'none', resize: 'vertical' }}></textarea>
               </div>
+
+              {errorMsg && (
+                <div style={{ padding: "10px 14px", background: "#FEE2E2", color: "#B91C1C", borderRadius: "8px", fontSize: "13px", fontWeight: "600", marginBottom: "16px", display: "flex", alignItems: "center", gap: "8px" }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                  {errorMsg}
+                </div>
+              )}
 
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                 <button 

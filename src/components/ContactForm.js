@@ -11,18 +11,23 @@ export default function ContactForm() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedType, setSubmittedType] = useState(null); // 'email' | 'whatsapp' | null
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (errorMsg) setErrorMsg(""); // Clear error when typing
+  };
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
     const { name, email, subject, message } = formData;
     if (!name || !subject || !message) {
-      alert("Please fill out all required fields (*).");
+      setErrorMsg("Please fill out all required fields (*).");
       return;
     }
 
     setIsSubmitting(true);
+    setErrorMsg("");
 
     try {
       await fetch('/api/contact', {
@@ -44,10 +49,11 @@ export default function ContactForm() {
     e.preventDefault();
     const { name, email, subject, message } = formData;
     if (!name || !subject || !message) {
-      alert("Please fill out all required fields (*).");
+      setErrorMsg("Please fill out all required fields (*).");
       return;
     }
 
+    setErrorMsg("");
     const waNumber = "917984488660";
     const text = `Hello 10X International!%0A%0A*New Contact Inquiry*%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Subject:* ${subject}%0A*Message:* ${message}`;
     window.open(`https://wa.me/${waNumber}?text=${text}`, "_blank");
@@ -114,6 +120,17 @@ export default function ContactForm() {
         <label style={{ display: "block", fontSize: "13px", fontWeight: "600", color: "#475569", marginBottom: "8px" }}>Message *</label>
         <textarea name="message" rows="5" required placeholder="Write your message here..." value={formData.message} onChange={handleChange} style={{ width: "100%", padding: "12px 16px", borderRadius: "8px", border: "1px solid #CBD5E1", fontSize: "14px", outline: "none", resize: "vertical" }}></textarea>
       </div>
+
+      {errorMsg && (
+        <div style={{ padding: "12px 16px", background: "#FEE2E2", color: "#B91C1C", borderRadius: "8px", fontSize: "13px", fontWeight: "600", marginBottom: "20px", display: "flex", alignItems: "center", gap: "8px" }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          {errorMsg}
+        </div>
+      )}
 
       <div style={{ display: "flex", gap: "14px", flexWrap: "wrap", alignItems: "center" }}>
         <button 
