@@ -141,7 +141,7 @@ const industrialExports = [
   {
     name: "RICE & SPICES",
     origin: "Export to Africa & South Africa",
-    image: "/images/more_agri.png",
+    image: "/images/rice_spices_export.png",
     category: "Industrial Export",
     description: "Bulk shipment of food grains, parboiled rice, and spices specifically packed for African commercial food importers and agencies.",
     highlights: ["Cost-Effective Freight Solutions", "High Shelf-Life Sealed Packaging", "SGS & Cotecna Inspection Ready", "Long-term Supply Contracts"]
