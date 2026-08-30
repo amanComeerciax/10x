@@ -6,35 +6,21 @@ export async function POST(req) {
     const { name, email, phone, subject, product, message } = body;
 
     const emailSubject = subject || (product ? `Product Inquiry: ${product}` : "New Website Inquiry");
-    
-    // We use Web3Forms API key or standard HTTP webhook dispatch
-    // Free & reliable API for forwarding inquiries directly to 10xinternational email
-    const web3formsAccessKey = process.env.WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
+    const targetEmail = "amanmemon0014@gmail.com";
 
+    // Direct dispatch to target email amanmemon0014@gmail.com
     const emailData = {
-      access_key: web3formsAccessKey,
-      subject: `[10X International] ${emailSubject}`,
-      from_name: name || "Website Visitor",
-      replyto: email,
-      message: `
-NEW INQUIRY RECEIVED FROM 10X INTERNATIONAL WEBSITE:
-
----------------------------------------------
-Name: ${name || "N/A"}
-Email: ${email || "N/A"}
-Phone: ${phone || "N/A"}
-Subject/Product: ${emailSubject}
----------------------------------------------
-
-MESSAGE / REQUIREMENTS:
-${message || "No specific details provided."}
-
----------------------------------------------
-Sent automatically via 10X International Web Portal.
-      `,
+      _subject: `[10X International Website Inquiry] ${emailSubject}`,
+      name: name || "Website Visitor",
+      email: email || "Not Provided",
+      phone: phone || "Not Provided",
+      inquiry_details: emailSubject,
+      message: message || "No message provided.",
+      _template: "table",
+      _captcha: "false"
     };
 
-    const res = await fetch("https://api.web3forms.com/submit", {
+    const res = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,12 +31,11 @@ Sent automatically via 10X International Web Portal.
 
     const result = await res.json();
 
-    if (result.success) {
-      return NextResponse.json({ success: true, message: "Email inquiry sent successfully!" });
-    } else {
-      // Fallback response for dev mode
-      return NextResponse.json({ success: true, message: "Inquiry logged." });
-    }
+    return NextResponse.json({ 
+      success: true, 
+      message: "Inquiry sent to amanmemon0014@gmail.com",
+      result
+    });
   } catch (error) {
     console.error("Error sending email inquiry:", error);
     return NextResponse.json({ success: false, error: "Failed to send email inquiry." }, { status: 500 });
