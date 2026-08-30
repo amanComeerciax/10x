@@ -582,23 +582,24 @@ img {
   gap: 8px;
   margin: 0 auto;
   padding: 12px 32px;
-  border: 2px solid var(--primary);
-  color: var(--primary);
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
+  background: #0F2537;
+  border: none;
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
   font-size: 14px;
-  border-radius: 8px;
+  border-radius: 30px;
   cursor: pointer;
-  background: transparent;
-  transition: var(--transition);
-  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.8px;
+  box-shadow: 0 4px 16px rgba(15, 37, 55, 0.25);
 }
 
 .view-all-btn:hover {
-  background: var(--primary);
-  color: var(--white);
+  background: #16364D;
+  color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(27, 94, 32, 0.3);
+  box-shadow: 0 8px 24px rgba(15, 37, 55, 0.4);
 }
 
 

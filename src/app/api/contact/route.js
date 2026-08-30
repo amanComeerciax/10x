@@ -1,43 +1,52 @@
 import { NextResponse } from "next/server";
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req) {
   try {
     const body = await req.json();
     const { name, email, phone, subject, product, message } = body;
 
-    const emailSubject = subject || (product ? `Product Inquiry: ${product}` : "New Website Inquiry");
-    const targetEmail = "amanmemon0014@gmail.com";
+    const emailSubject = subject || (product ? `Quote Request: ${product}` : "New Website Inquiry");
+    const htmlContent = `
+      <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
+        <h2 style="color: #0F2537; border-bottom: 2px solid #22c55e; padding-bottom: 10px;">
+          NEW INQUIRY FROM 10X INTERNATIONAL WEBSITE
+        </h2>
+        <p><strong>Name:</strong> ${name || "N/A"}</p>
+        <p><strong>Email:</strong> ${email || "N/A"}</p>
+        ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
+        ${product ? `<p><strong>Product of Interest:</strong> ${product}</p>` : ''}
+        <p><strong>Subject:</strong> ${emailSubject}</p>
+        <h3 style="margin-top: 20px; color: #0F2537;">MESSAGE / REQUIREMENTS:</h3>
+        <div style="background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; white-space: pre-wrap;">${message || "No specific details provided."}</div>
+        <p style="margin-top: 30px; font-size: 12px; color: #94a3b8;">
+          Sent automatically via 10X International Web Portal.
+        </p>
+      </div>
+    `;
 
-    // Direct dispatch to target email amanmemon0014@gmail.com
-    const emailData = {
-      _subject: `[10X International Website Inquiry] ${emailSubject}`,
-      name: name || "Website Visitor",
-      email: email || "Not Provided",
-      phone: phone || "Not Provided",
-      inquiry_details: emailSubject,
-      message: message || "No message provided.",
-      _template: "table",
-      _captcha: "false"
-    };
-
-    const res = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(emailData),
+    const { data, error } = await resend.emails.send({
+      from: '10X Website <onboarding@resend.dev>', // Resend verified testing email
+      to: ['amanmemon0014@gmail.com'],
+      replyTo: email || 'amanmemon0014@gmail.com',
+      subject: `[10X International] ${emailSubject}`,
+      html: htmlContent,
     });
 
-    const result = await res.json();
+    if (error) {
+      console.error("Resend API Error:", error);
+      return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+    }
 
     return NextResponse.json({ 
       success: true, 
-      message: "Inquiry sent to amanmemon0014@gmail.com",
-      result
+      message: "Email sent successfully",
+      data
     });
   } catch (error) {
-    console.error("Error sending email inquiry:", error);
-    return NextResponse.json({ success: false, error: "Failed to send email inquiry." }, { status: 500 });
+    console.error("Server Error sending email:", error);
+    return NextResponse.json({ success: false, error: "Failed to process request." }, { status: 500 });
   }
 }
