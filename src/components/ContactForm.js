@@ -16,8 +16,13 @@ export default function ContactForm() {
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     const { name, email, subject, message } = formData;
+    if (!name || !subject || !message) {
+      alert("Please fill out all required fields (*).");
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       await fetch('/api/contact', {
@@ -38,6 +43,11 @@ export default function ContactForm() {
   const handleWhatsAppSubmit = (e) => {
     e.preventDefault();
     const { name, email, subject, message } = formData;
+    if (!name || !subject || !message) {
+      alert("Please fill out all required fields (*).");
+      return;
+    }
+
     const waNumber = "917984488660";
     const text = `Hello 10X International!%0A%0A*New Contact Inquiry*%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Subject:* ${subject}%0A*Message:* ${message}`;
     window.open(`https://wa.me/${waNumber}?text=${text}`, "_blank");

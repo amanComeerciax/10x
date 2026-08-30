@@ -27,8 +27,13 @@ export default function QuoteModal({ isOpen, onClose }) {
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     const { name, phone, email, product, message } = formData;
+    if (!name || !phone || !product) {
+      alert("Please fill out all required fields (*).");
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       await fetch('/api/contact', {
@@ -47,6 +52,11 @@ export default function QuoteModal({ isOpen, onClose }) {
   const handleWhatsAppSubmit = (e) => {
     e.preventDefault();
     const { name, phone, email, product, message } = formData;
+    if (!name || !phone || !product) {
+      alert("Please fill out all required fields (*).");
+      return;
+    }
+
     const waNumber = "917984488660";
     const text = `Hello 10X International!%0A%0A*New Inquiry / Quote Request*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Email:* ${email}%0A*Product of Interest:* ${product}%0A*Message:* ${message}`;
     window.open(`https://wa.me/${waNumber}?text=${text}`, "_blank");
