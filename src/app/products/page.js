@@ -96,7 +96,7 @@ const all15Products = [
     id: 10,
     name: "COMFORT UNDER GARMENTS & INNERWEAR",
     origin: "Imported from China to India",
-    image: "/images/kids_wear.png",
+    image: "/images/undergarments.png",
     category: "Import Product",
     description: "Comfortable, high-elasticity innerwear for men, women, and kids produced by certified overseas manufacturing partners.",
     highlights: ["Seamless & Ergonomic Design", "Anti-bacterial & Soft Fabric", "High Volume Wholesale Packaging", "Tested for Maximum Comfort"]

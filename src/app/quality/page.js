@@ -42,9 +42,8 @@ export default function QualityPage() {
                   <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0F2537" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
                 </div>
                 <div>
-                  <h3 style={{ fontSize: "18px", fontWeight: "800", color: "#0F172A", margin: "0 0 4px 0" }}>IEC CERTIFIED</h3>
-                  <p style={{ color: "#475569", fontSize: "14px", margin: "0 0 8px 0" }}>Directorate General of Foreign Trade</p>
-                  <div style={{ background: "#F1F5F9", display: "inline-block", padding: "4px 12px", borderRadius: "6px", color: "#0F172A", fontWeight: "700", fontSize: "14px" }}>AADFZ3605M</div>
+                  <h3 style={{ fontSize: "18px", fontWeight: "800", color: "#0F172A", margin: "0 0 4px 0" }}>GOVT. APPROVED TRADE PARTNER</h3>
+                  <p style={{ color: "#475569", fontSize: "14px", margin: 0 }}>Directorate General of Foreign Trade Compliant</p>
                 </div>
               </div>
             </div>

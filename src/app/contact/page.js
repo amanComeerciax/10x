@@ -44,26 +44,13 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div style={{ display: "flex", alignItems: "flex-start", gap: "16px", marginBottom: "24px" }}>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
                   <div style={{ width: "48px", height: "48px", borderRadius: "50%", background: "#F4EFE6", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F2537" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                   </div>
                   <div>
                     <h4 style={{ fontSize: "14px", fontWeight: "700", color: "#0F172A", marginBottom: "4px" }}>Email</h4>
                     <p style={{ color: "#475569", fontSize: "15px" }}>info@10xinternational.com</p>
-                  </div>
-                </div>
-
-                <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
-                  <div style={{ width: "48px", height: "48px", borderRadius: "50%", background: "#F4EFE6", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F2537" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  </div>
-                  <div>
-                    <h4 style={{ fontSize: "14px", fontWeight: "700", color: "#0F172A", marginBottom: "4px" }}>Registered Office</h4>
-                    <p style={{ color: "#475569", fontSize: "15px", lineHeight: "1.6" }}>
-                      10X INTERNATIONAL<br/>
-                      NR. HAJI BAWA NI KUI, 0, 14/4, M.J.D. FARM, SARKHEJ ROAD, JUHAPURA, Ahmedabad, Gujarat - 380055
-                    </p>
                   </div>
                 </div>
               </div>

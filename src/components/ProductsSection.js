@@ -39,7 +39,7 @@ const importProducts = [
   {
     name: "UNDER GARMENTS",
     origin: "Imported from China to India",
-    image: "/images/kids_wear.png",
+    image: "/images/undergarments.png",
     category: "Import Product",
     description: "Comfortable, high-elasticity innerwear for men, women, and kids produced by certified overseas manufacturing partners.",
     highlights: ["Seamless & Ergonomic Design", "Anti-bacterial & Soft Fabric", "High Volume Wholesale Packaging", "Tested for Maximum Comfort"]
@@ -47,7 +47,7 @@ const importProducts = [
   {
     name: "& MUCH MORE",
     origin: "Imported from China to India",
-    image: "/images/beauty_cosmetics.png",
+    image: "/images/more_imports.png",
     category: "Import Product",
     description: "Diverse range of consumer goods, electronics accessories, and lifestyle products customized according to Indian importer specifications.",
     highlights: ["Custom Sourcing on Demand", "Factory Audits & Quality Inspection", "Complete Customs Door-to-Door Service", "Flexible MOQ Options"]
@@ -98,7 +98,7 @@ const agriExports = [
   {
     name: "& MUCH MORE",
     origin: "Export to UAE & Gulf Countries",
-    image: "/images/rice.png",
+    image: "/images/more_agri.png",
     category: "Agri Export",
     description: "Wide assortment of agro-commodities including oilseeds, dry fruits, and food grains tailored for international food distributors.",
     highlights: ["Flexible Bulk Container Loads", "Comprehensive Lab Test Reports", "Reliable Supply Chain Operations", "End-to-End Export Documentation"]
@@ -141,7 +141,7 @@ const industrialExports = [
   {
     name: "RICE & SPICES",
     origin: "Export to Africa & South Africa",
-    image: "/images/spices.png",
+    image: "/images/more_agri.png",
     category: "Industrial Export",
     description: "Bulk shipment of food grains, parboiled rice, and spices specifically packed for African commercial food importers and agencies.",
     highlights: ["Cost-Effective Freight Solutions", "High Shelf-Life Sealed Packaging", "SGS & Cotecna Inspection Ready", "Long-term Supply Contracts"]
@@ -149,7 +149,7 @@ const industrialExports = [
   {
     name: "& MUCH MORE",
     origin: "Export to Africa & South Africa",
-    image: "/images/machinery.png",
+    image: "/images/more_industrial.png",
     category: "Industrial Export",
     description: "Custom sourcing of industrial goods, electrical components, and heavy engineering products for overseas projects.",
     highlights: ["One-stop Procurement Solution", "Rigorous Pre-shipment Inspection", "Direct Port-to-Port Logistics", "Dedicated Account Management"]

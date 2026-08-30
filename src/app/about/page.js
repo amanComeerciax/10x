@@ -62,17 +62,9 @@ export default function AboutPage() {
                   <span style={{ color: "rgba(255,255,255,0.7)", fontSize: "13px", display: "block", marginBottom: "4px" }}>Firm Name</span>
                   <span style={{ fontSize: "16px", fontWeight: "600" }}>10X INTERNATIONAL</span>
                 </li>
-                <li style={{ marginBottom: "16px" }}>
+                <li>
                   <span style={{ color: "rgba(255,255,255,0.7)", fontSize: "13px", display: "block", marginBottom: "4px" }}>Nature of Concern</span>
                   <span style={{ fontSize: "16px", fontWeight: "600" }}>Partnership</span>
-                </li>
-                <li style={{ marginBottom: "16px" }}>
-                  <span style={{ color: "rgba(255,255,255,0.7)", fontSize: "13px", display: "block", marginBottom: "4px" }}>IEC Code</span>
-                  <span style={{ fontSize: "16px", fontWeight: "600", color: "#FDE047" }}>AADFZ3605M</span>
-                </li>
-                <li style={{ marginBottom: "16px" }}>
-                  <span style={{ color: "rgba(255,255,255,0.7)", fontSize: "13px", display: "block", marginBottom: "4px" }}>Registered Office</span>
-                  <span style={{ fontSize: "14px", lineHeight: "1.5" }}>NR. HAJI BAWA NI KUI, 14/4, M.J.D. FARM, SARKHEJ ROAD, JUHAPURA, Ahmedabad, Gujarat - 380055</span>
                 </li>
               </ul>
             </div>
