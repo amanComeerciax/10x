@@ -21,11 +21,13 @@ export const metadata = {
 };
 
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import PageLoader from "@/components/PageLoader";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${jakarta.variable} ${inter.variable}`}>
       <body>
+        <PageLoader />
         {children}
         <FloatingWhatsApp />
       </body>
