@@ -30,16 +30,23 @@ export default function ContactForm() {
     setErrorMsg("");
 
     try {
-      await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, subject, message }),
       });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        setErrorMsg(data.error || "Failed to send email. Please check configuration.");
+        setIsSubmitting(false);
+        return;
+      }
       setFormData({ name: '', email: '', subject: '', message: '' });
       setSubmittedType('email');
       setTimeout(() => setSubmittedType(null), 5000);
     } catch (err) {
       console.error("Email send error:", err);
+      setErrorMsg("Network error. Please try again.");
     }
     
     setIsSubmitting(false);

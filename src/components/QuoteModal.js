@@ -41,15 +41,22 @@ export default function QuoteModal({ isOpen, onClose }) {
     setErrorMsg("");
 
     try {
-      await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, phone, email, product, message }),
       });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        setErrorMsg(data.error || "Failed to send email. Please check configuration.");
+        setIsSubmitting(false);
+        return;
+      }
       setFormData({ name: '', phone: '', email: '', product: '', message: '' });
       handleSuccessAnimation('email');
     } catch (err) {
       console.error("Email send error:", err);
+      setErrorMsg("Network error. Please try again.");
     }
     setIsSubmitting(false);
   };
