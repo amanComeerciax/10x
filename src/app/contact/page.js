@@ -40,7 +40,9 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 style={{ fontSize: "14px", fontWeight: "700", color: "#0F172A", marginBottom: "4px" }}>Phone</h4>
-                    <p style={{ color: "#475569", fontSize: "15px" }}>+91 98765 43210</p>
+                    <p style={{ color: "#475569", fontSize: "15px" }}>
+                      <a href="tel:+917984488660" style={{ color: "inherit", textDecoration: "none" }}>+91 79844 88660</a>
+                    </p>
                   </div>
                 </div>
 
