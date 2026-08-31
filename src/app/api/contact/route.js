@@ -29,8 +29,8 @@ export async function POST(req) {
 
     const { data, error } = await resend.emails.send({
       from: '10X Website <onboarding@resend.dev>', // Resend verified testing email
-      to: ['amanmemon0014@gmail.com'],
-      replyTo: email || 'amanmemon0014@gmail.com',
+      to: ['info10xinternational@gmail.com'],
+      replyTo: email || 'info10xinternational@gmail.com',
       subject: `[10X International] ${emailSubject}`,
       html: htmlContent,
     });

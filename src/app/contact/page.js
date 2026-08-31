@@ -52,7 +52,9 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 style={{ fontSize: "14px", fontWeight: "700", color: "#0F172A", marginBottom: "4px" }}>Email</h4>
-                    <p style={{ color: "#475569", fontSize: "15px" }}>info@10xinternational.com</p>
+                    <p style={{ color: "#475569", fontSize: "15px" }}>
+                      <a href="mailto:info10xinternational@gmail.com" style={{ color: "inherit", textDecoration: "none" }}>info10xinternational@gmail.com</a>
+                    </p>
                   </div>
                 </div>
               </div>
