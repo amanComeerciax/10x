@@ -89,6 +89,7 @@ export default function HeroSection() {
               width={750}
               height={500}
               priority
+              unoptimized
               style={{
                 width: "100%",
                 height: "auto",
